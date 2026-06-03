@@ -7,6 +7,8 @@ def main_menu() -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
     kb.button(text="👗 Опитай дреха",    callback_data="tryon_start")
     kb.button(text="💰 Купи монети",      callback_data="buy_coins")
+    kb.button(text="📅 Дневен бонус",     callback_data="daily_checkin")
+    kb.button(text="🎁 Промо код",        callback_data="promo_code")
     kb.button(text="👤 Профил",           callback_data="profile")
     kb.button(text="❓ Как работи",       callback_data="how_it_works")
     kb.adjust(2)
@@ -52,4 +54,10 @@ def coin_packages_keyboard() -> InlineKeyboardMarkup:
 def back_to_menu() -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
     kb.button(text="🏠 Главно меню", callback_data="main_menu")
+    return kb.as_markup()
+
+
+def cancel_keyboard() -> InlineKeyboardMarkup:
+    kb = InlineKeyboardBuilder()
+    kb.button(text="❌ Отказ", callback_data="main_menu")
     return kb.as_markup()
