@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
       .prepare(`INSERT INTO goals (title, description, target_date) VALUES (?, ?, ?)`)
       .run(title.trim(), description, target_date || null);
 
-    const goal = db.prepare(`SELECT * FROM goals WHERE id = ?`).get(result.lastInsertRowid);
+    const goal = db.prepare(`SELECT * FROM goals WHERE id = ?`).get(result.lastInsertRowid) as Record<string, unknown>;
     return NextResponse.json({ ...goal, tasks: [] }, { status: 201 });
   } catch (error) {
     console.error('Goals POST error:', error);

@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
       .prepare(`INSERT INTO habits (name, description, color) VALUES (?, ?, ?)`)
       .run(name.trim(), description, color);
 
-    const habit = db.prepare(`SELECT * FROM habits WHERE id = ?`).get(result.lastInsertRowid);
+    const habit = db.prepare(`SELECT * FROM habits WHERE id = ?`).get(result.lastInsertRowid) as Record<string, unknown>;
     return NextResponse.json({ ...habit, completed_today: false, streak: 0, completions: [] }, { status: 201 });
   } catch (error) {
     console.error('Habits POST error:', error);

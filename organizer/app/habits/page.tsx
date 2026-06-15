@@ -295,14 +295,8 @@ function HabitCard({
                       completed
                         ? 'text-white shadow-sm'
                         : 'bg-slate-100 text-slate-300'
-                    } ${isToday ? 'ring-2 ring-offset-1' : ''}`}
-                    style={
-                      completed
-                        ? { backgroundColor: habit.color }
-                        : isToday
-                        ? { ringColor: habit.color }
-                        : {}
-                    }
+                    } ${isToday ? 'ring-2 ring-offset-1 ring-slate-400' : ''}`}
+                    style={completed ? { backgroundColor: habit.color } : {}}
                   >
                     {completed && <Check size={12} />}
                   </div>
